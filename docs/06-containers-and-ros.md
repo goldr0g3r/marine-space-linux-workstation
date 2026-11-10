@@ -25,6 +25,8 @@ bash scripts/ros.sh ros2 run demo_nodes_py listener
 
 The listener should print the talker's messages. Stop with Ctrl-C. The helper creates `workspaces/ros`, maps your UID, keeps supplementary groups, and shares the host network. It defaults to domain 42 and local-only discovery. It limits each container to 8 GiB RAM and 6 CPUs; limits are **per container**, so running several can still exhaust the host. [Podman run options](https://docs.podman.io/en/latest/markdown/podman-run.1.html).
 
+After the smoke test, follow [the first sensor lab](16-first-sensor-lab.md) to publish timestamped readings, record them and verify replay. For a wired robot, use [the networking chapter](17-robot-networking-and-can.md).
+
 Interactive shell:
 
 ```bash

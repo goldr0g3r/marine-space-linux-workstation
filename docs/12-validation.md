@@ -12,14 +12,25 @@ Prepared on 10 November 2026. This file distinguishes repository checks from har
 - Two separate containers communicated using the provided helper: C++ talker to Python listener, with 14 messages received during a 15-second test. Both were stopped intentionally by `timeout` (exit 124).
 - Created and built an `ament_python` package using colcon inside the container; sourced its overlay and resolved it with `ros2 pkg prefix`.
 - Confirmed created source files retain the host user's UID/GID (1000:1000).
-- Checked all local Markdown link targets/anchors and balanced code fences across 18 Markdown documents, including the alternative installation path and acceptance template.
+- Checked all local Markdown link targets/anchors and balanced code fences across 21 Markdown documents, including the alternative installation path, acceptance template and practical labs.
 - Checked external link HTTP responses, corrected a moved micro-ROS tutorial link, and checked the additional EndeavourOS references. HTTP reachability does not guarantee that a page's instructions apply to every future version.
 - Reviewed staged files for whitespace issues and kept test workspaces, logs and credentials out of the repository.
-- On continuation, syntax-checked 48 Bash documentation examples with `bash -n` without executing their commands. This checks shell syntax, not whether each package, device or service is available on a future installation.
+- Syntax-checked 70 Bash documentation examples with `bash -n` without executing their commands. This checks shell syntax, not whether each package, device or service is available on a future installation.
 
 ## Continuation update
 
-Added the researched EndeavourOS installation path, a first-weekend execution plan and a reusable acceptance record. Checked upstream EndeavourOS kernel/recovery documentation and zram-generator configuration. No EndeavourOS installation or new host configuration was performed. The earlier ROS runtime results below remain the runtime evidence for this repository.
+Added the researched EndeavourOS installation path, a first-weekend execution plan and a reusable acceptance record. Checked upstream EndeavourOS kernel/recovery documentation and zram-generator configuration. No EndeavourOS installation or new host configuration was performed.
+
+## Practical-lab validation
+
+- Executed `examples/ros/temperature_publisher.py` in the existing rootless ROS image, using a separate ignored test workspace and local-only domain 77.
+- Received a live `sensor_msgs/msg/Temperature` sample, then recorded **75 messages** over roughly **7.4 seconds** to MCAP during an eight-second recorder test.
+- Deserialized every recorded sample and checked increasing source timestamps, temperature within 18–22 degrees Celsius, the expected frame name and unspecified variance.
+- Stopped the original publisher, replayed the bag and received a stored message in a separate subscriber. Timed publisher/recorder exits were intentional, not test failures.
+- Built `candump` and `cansend` from can-utils tag `v2025.01`, commit `01083a64ebf28cc716efe2d2fd51c141042ae34b`, using the documented CMake procedure. No system-wide install was performed.
+- Parsed the Python example successfully. Test logs, recordings and the can-utils build remain under ignored `reports/` directories and are not uploaded.
+
+The Ethernet profile, virtual CAN interface and image/volume backup recipes were researched and syntax-checked but not executed. A successful tools build does not validate a physical or virtual CAN exchange.
 
 ## Reproduction details
 

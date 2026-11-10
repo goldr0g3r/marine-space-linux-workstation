@@ -56,6 +56,8 @@ Initialize only once. Customize the selected folders and exclusions: any exclude
 
 Automate backup only after a manual restore succeeds. Require the external mount to be present before writing, so an absent drive cannot silently redirect backups into a local mountpoint directory.
 
+Also preserve development state that lives outside ordinary source folders. [The environment-backup chapter](18-offline-and-environment-backup.md) distinguishes container images, writable project directories and named volumes, with export and restore procedures.
+
 ## Monthly storage review
 
 ```bash

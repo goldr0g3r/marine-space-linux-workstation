@@ -47,6 +47,8 @@ Use the [first-weekend plan](docs/15-first-weekend.md) for execution order and t
 - [ ] Verify a USB serial board and debug probe as a normal user.
 - [ ] Flash a blinky example; set a breakpoint; read UART output.
 - [ ] Complete one ROS bag replay and one simulator exercise.
+- [ ] Complete the [synthetic sensor recording/replay lab](docs/16-first-sensor-lab.md) before connecting real sensors.
+- [ ] If working with a companion computer, verify its Ethernet route, ROS discovery and timestamp assumptions using the [networking guide](docs/17-robot-networking-and-can.md).
 
 ## Reliability and capacity
 
@@ -56,3 +58,5 @@ Use the [first-weekend plan](docs/15-first-weekend.md) for execution order and t
 - [ ] Keep roughly 70–90 GiB free; inspect images, datasets and snapshots monthly.
 - [ ] Establish a weekly update window and re-run the short hardware/audio test afterward.
 - [ ] Review [the learning path](docs/09-learning-path.md) every two weeks.
+- [ ] Archive a known-good container image and back up its project data separately; follow [environment recovery](docs/18-offline-and-environment-backup.md).
+- [ ] Before field work, rehearse the actual project with internet access unavailable.

@@ -39,7 +39,7 @@ The helper invokes `pacman -Syu`, not a partial `-Sy` upgrade. Review pacman's c
 | Marine/autopilot | ArduPilot SITL, MAVProxy, QGroundControl | Separate compatible environment; host GUI if needed |
 | Space software | NASA F´; later cFS | Separate project environment |
 | ML/data | NumPy, SciPy, pandas, matplotlib, scikit-learn, JupyterLab, PyTorch | uv environment, dependencies locked per project |
-| Network inspection | Wireshark, tcpdump, can-utils | Optional host packages; only when the task needs them |
+| Network inspection | Wireshark, tcpdump, can-utils | Optional host tools; can-utils has a [pinned source-build path](17-robot-networking-and-can.md#learn-socketcan-without-an-adapter) because it was absent from the inspected package metadata |
 | Documentation | Markdown + Git; diagrams in Mermaid | This repository and your project repos |
 
 Do not install a host CUDA development toolkit merely to use a PyTorch wheel. The NVIDIA driver is required on the host; framework wheels often provide the needed userspace runtime. Compiling custom CUDA extensions is a separate requirement. [PyTorch installation selector](https://pytorch.org/get-started/locally/).

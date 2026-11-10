@@ -43,7 +43,7 @@ Keep the CLI environment first. Add RViz/Gazebo only after the small example wor
 | Available equipment / immediate goal | First task | Success evidence |
 |---|---|---|
 | MCU board and debug probe | Blinky, breakpoint and UART output | You can reproduce build/flash/debug from written steps |
-| No board yet | Sensor publisher, recording and replay in ROS | Replayed data matches expected values and timestamps |
+| No board yet | [Synthetic sensor lab](16-first-sensor-lab.md): publisher, recording and replay | Replayed data matches expected values and timestamps |
 | AI/ML first | Small CPU dataset baseline, then CUDA smoke test | Saved evaluation and a passing numerical test if using GPU |
 | Marine simulation first | Minimal documented SITL exercise | Telemetry reaches the ground station |
 | Space software first | F´ command/event/telemetry example | Command changes state and emits expected telemetry |

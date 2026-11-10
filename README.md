@@ -39,6 +39,9 @@ For a shorter execution sequence, start with [the first-weekend plan](docs/15-fi
 12. [Research sources](docs/11-sources.md) and [validation record](docs/12-validation.md).
 13. [CachyOS versus EndeavourOS](docs/13-cachyos-vs-endeavouros.md) — a detailed fresh-install comparison and how the guide changes if you choose EndeavourOS.
 14. [EndeavourOS installation path](docs/14-endeavouros-install.md) — alternative host setup, LTS/NVIDIA checks, zram and recovery.
+15. [First sensor lab](docs/16-first-sensor-lab.md) — runnable Python sensor example, ROS recording and replay without hardware.
+16. [Robot networking and CAN](docs/17-robot-networking-and-can.md) — dedicated Ethernet, clock checks and a virtual CAN exercise.
+17. [Offline use and environment backup](docs/18-offline-and-environment-backup.md) — preserve images, project data and volumes; rehearse working without internet.
 
 ## Included helpers
 
