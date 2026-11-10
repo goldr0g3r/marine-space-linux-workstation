@@ -2,6 +2,8 @@
 
 Unchecked boxes are actions for the laptop owner, not claims of completed setup.
 
+Use the [first-weekend plan](docs/15-first-weekend.md) for execution order and the [acceptance record](templates/acceptance-record.md) to keep actual results. For EndeavourOS, substitute its [installation chapter](docs/14-endeavouros-install.md) for CachyOS-specific steps.
+
 ## Before reinstalling — required
 
 - [ ] Read the distro comparison and agree with its rolling-release tradeoff.
@@ -10,7 +12,7 @@ Unchecked boxes are actions for the laptop owner, not claims of completed setup.
 - [ ] Restore several files from backup; verify access to GitHub after reinstall.
 - [ ] Save Windows recovery/BitLocker information if applicable; disable Windows Fast Startup.
 - [ ] Identify **both SSDs by model, capacity and serial locally**, and mark the Linux target.
-- [ ] Download and verify the current CachyOS Desktop ISO; prepare recovery media.
+- [ ] Download and verify the selected distro's current ISO; prepare recovery media.
 - [ ] Boot live USB in UEFI mode; test keyboard, touchpad, Wi-Fi, screen brightness, audio and external monitor.
 - [ ] Decide encryption. Prefer LUKS for laptop data when the current installer/bootloader supports the desired layout.
 - [ ] Review the installer's complete partition summary. Preserve the Windows disk and its EFI partition.
@@ -21,7 +23,7 @@ Unchecked boxes are actions for the laptop owner, not claims of completed setup.
 - [ ] Keep the installer-supported bootloader; verify both main and LTS kernel entries.
 - [ ] Complete a full update on AC power and reboot.
 - [ ] Validate `nvidia-smi`, AMD graphics, Wi-Fi, Bluetooth, webcam and microphone.
-- [ ] Confirm Snapper is configured and bootable recovery is available for the chosen bootloader.
+- [ ] Confirm the chosen snapshot manager is configured and bootable recovery is available for the chosen bootloader (Snapper on the CachyOS path, Timeshift on the described EndeavourOS path).
 - [ ] Confirm one power-management service, active zram and periodic SSD TRIM.
 - [ ] Install the core tools; restore projects selectively rather than copying all old configuration.
 

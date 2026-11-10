@@ -12,9 +12,14 @@ Prepared on 10 November 2026. This file distinguishes repository checks from har
 - Two separate containers communicated using the provided helper: C++ talker to Python listener, with 14 messages received during a 15-second test. Both were stopped intentionally by `timeout` (exit 124).
 - Created and built an `ament_python` package using colcon inside the container; sourced its overlay and resolved it with `ros2 pkg prefix`.
 - Confirmed created source files retain the host user's UID/GID (1000:1000).
-- Checked all local Markdown link targets/anchors and balanced code fences across 15 Markdown documents.
+- Checked all local Markdown link targets/anchors and balanced code fences across 18 Markdown documents, including the alternative installation path and acceptance template.
 - Checked external link HTTP responses, corrected a moved micro-ROS tutorial link, and checked the additional EndeavourOS references. HTTP reachability does not guarantee that a page's instructions apply to every future version.
 - Reviewed staged files for whitespace issues and kept test workspaces, logs and credentials out of the repository.
+- On continuation, syntax-checked 48 Bash documentation examples with `bash -n` without executing their commands. This checks shell syntax, not whether each package, device or service is available on a future installation.
+
+## Continuation update
+
+Added the researched EndeavourOS installation path, a first-weekend execution plan and a reusable acceptance record. Checked upstream EndeavourOS kernel/recovery documentation and zram-generator configuration. No EndeavourOS installation or new host configuration was performed. The earlier ROS runtime results below remain the runtime evidence for this repository.
 
 ## Reproduction details
 

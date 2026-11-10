@@ -23,6 +23,8 @@ The Linux filesystem was about 80% used, with 100 GiB available. Capacity planni
 
 ## Read in this order
 
+For a shorter execution sequence, start with [the first-weekend plan](docs/15-first-weekend.md) and copy [the acceptance record](templates/acceptance-record.md).
+
 1. [Master TODO checklist](TODO.md) — progress from backup to a working workstation.
 2. [Distro decision](docs/01-distro-decision.md) — comparison, rationale and alternatives.
 3. [Fresh installation](docs/02-fresh-install.md) — backup, Windows preservation, partition choices and first boot.
@@ -36,6 +38,7 @@ The Linux filesystem was about 80% used, with 100 GiB available. Capacity planni
 11. [Maintenance & recovery](docs/10-maintenance-and-recovery.md) — updates, snapshots, backups and troubleshooting.
 12. [Research sources](docs/11-sources.md) and [validation record](docs/12-validation.md).
 13. [CachyOS versus EndeavourOS](docs/13-cachyos-vs-endeavouros.md) — a detailed fresh-install comparison and how the guide changes if you choose EndeavourOS.
+14. [EndeavourOS installation path](docs/14-endeavouros-install.md) — alternative host setup, LTS/NVIDIA checks, zram and recovery.
 
 ## Included helpers
 

@@ -18,6 +18,9 @@ Research date: **10 November 2026**, Asia/Kolkata. Links point to upstream proje
 | [EndeavourOS](https://endeavouros.com/) | Arch-family alternative |
 | [EndeavourOS Titan Nova](https://endeavouros.com/news/titan-nova-is-available/) | Current installation-media context; rolling systems update continuously |
 | [EndeavourOS snapshot guide](https://discovery.endeavouros.com/btrfs-with-timeshift-snapshots-on-the-grub-menu/) | Explicit Btrfs/GRUB recovery setup; separate from CachyOS defaults |
+| [EndeavourOS downloads](https://endeavouros.com/download/) | Alternative installer and verification resources |
+| [EndeavourOS AKM](https://discovery.endeavouros.com/akm/) | Kernel and matching-header selection |
+| [systemd zram-generator](https://github.com/systemd/zram-generator) | Optional compressed swap setup when the installer has not configured it |
 | [Why CachyOS](https://wiki.cachyos.org/cachyos_basic/why_cachyos/) | Performance orientation and distribution-specific tooling |
 | [NixOS manual](https://nixos.org/manual/nixos/stable/) | Declarative-system alternative |
 | [ASUS Linux guidance](https://asus-linux.org/guides/arch-guide/) | ASUS-specific tooling context; not proof of every FA706IC feature |

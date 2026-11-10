@@ -44,6 +44,8 @@ I would not reinstall into EndeavourOS solely expecting an audio fix or a dramat
 
 ## If you choose EndeavourOS, adapt the guide this way
 
+Follow the expanded [EndeavourOS installation chapter](14-endeavouros-install.md) for commands and acceptance checks. The following points summarize where it differs from the CachyOS path.
+
 1. Use current EndeavourOS media, verification and installation instructions. ISO names describe installation media; an installed rolling system does not need reinstalling for every named ISO. [Current release explanation](https://endeavouros.com/news/titan-nova-is-available/).
 2. Select KDE and Btrfs if desired. Choose the bootloader together with the recovery plan. Its default systemd-boot choice should not be mistaken for automatic bootable Btrfs snapshot support.
 3. Use EndeavourOS hardware tooling and Arch-compatible kernel/module packages. Do not run CachyOS `chwd`, add its repositories or copy `linux-cachyos` package instructions into a plain EndeavourOS setup.
@@ -51,7 +53,7 @@ I would not reinstall into EndeavourOS solely expecting an audio fix or a dramat
 5. Keep the audio, storage-budget, project-isolation and learning guidance. Use the same rootless ROS image and acceptance tests.
 6. The package helper previews portable-looking Arch package lists, but **its apply mode intentionally accepts CachyOS only**. On EndeavourOS, review availability with `pacman -Si` and run the needed package command manually after a full-system update. Do not bypass the guard and assume every system-specific instruction applies.
 
-This is an adaptation map, not a claim that the full EndeavourOS install was tested. The supplied container was tested on the existing CachyOS host.
+The expanded procedure is researched, not a claim that the full EndeavourOS install was tested. The supplied container was tested on the existing CachyOS host.
 
 ## How to resolve a close choice with evidence
 
