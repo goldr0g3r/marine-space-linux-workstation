@@ -42,6 +42,7 @@ For a shorter execution sequence, start with [the first-weekend plan](docs/15-fi
 15. [First sensor lab](docs/16-first-sensor-lab.md) — runnable Python sensor example, ROS recording and replay without hardware.
 16. [Robot networking and CAN](docs/17-robot-networking-and-can.md) — dedicated Ethernet, clock checks and a virtual CAN exercise.
 17. [Offline use and environment backup](docs/18-offline-and-environment-backup.md) — preserve images, project data and volumes; rehearse working without internet.
+18. [Temperature-monitor mini-project](docs/19-temperature-monitor-project.md) — threshold alerts, hysteresis, missing-data detection and repeatable tests.
 
 ## Included helpers
 

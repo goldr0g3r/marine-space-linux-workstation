@@ -52,6 +52,7 @@ Research date: **10 November 2026**, Asia/Kolkata. Links point to upstream proje
 | [NASA F´ installation](https://fprime.jpl.nasa.gov/latest/docs/getting-started/installing-fprime/) | Space software learning environment |
 | [ROS Temperature message](https://github.com/ros2/common_interfaces/blob/jazzy/sensor_msgs/msg/Temperature.msg) | Units, timestamp/frame and variance for the synthetic example |
 | [rosbag2 Jazzy](https://github.com/ros2/rosbag2/blob/jazzy/README.md) | Recording, playback and time behavior |
+| [rclpy Jazzy node source](https://github.com/ros2/rclpy/blob/jazzy/rclpy/rclpy/node.py) | Clock selection for the temperature monitor's timer; primary-source fallback when API docs were blocked |
 | [NetworkManager settings](https://networkmanager.pages.freedesktop.org/NetworkManager/NetworkManager/nm-settings-nmcli.html) | Static bench Ethernet without a default route |
 | [Linux SocketCAN](https://docs.kernel.org/networking/can.html) and [can-utils](https://github.com/linux-can/can-utils) | Virtual CAN and userspace tools |
 | [Podman image archive](https://docs.podman.io/en/latest/markdown/podman-save.1.html) and [volume export](https://docs.podman.io/en/latest/markdown/podman-volume-export.1.html) | Separate preservation of environments and mounted data |

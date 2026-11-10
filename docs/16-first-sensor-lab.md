@@ -76,6 +76,6 @@ For later time-dependent processing, playback can publish `/clock` with `--clock
 - [ ] The bag directory survives container exit and remains owned by your host user.
 - [ ] Experiment notes record the Git revision, image ID, topic, rate and collection conditions.
 
-Next, write a subscriber that flags readings above a chosen threshold and test it on replayed data. Then replace the synthetic source with UART sensor readings while keeping units and timestamps explicit. Add missing-reading and malformed-packet cases before attempting a control loop.
+Next, use the supplied [temperature-monitor mini-project](19-temperature-monitor-project.md) to flag high readings, detect missing/invalid data and verify recovery. Then replace the synthetic source with UART sensor readings while keeping units and timestamps explicit.
 
 If the topic exists but samples are absent, inspect publisher/subscriber QoS and use matching domain/discovery settings. If `ros2 bag` is unavailable in a different image, add the release-matched rosbag packages to that image; avoid installing ROS tools into the host Python environment.

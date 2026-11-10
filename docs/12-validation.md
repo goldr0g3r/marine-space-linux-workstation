@@ -12,10 +12,10 @@ Prepared on 10 November 2026. This file distinguishes repository checks from har
 - Two separate containers communicated using the provided helper: C++ talker to Python listener, with 14 messages received during a 15-second test. Both were stopped intentionally by `timeout` (exit 124).
 - Created and built an `ament_python` package using colcon inside the container; sourced its overlay and resolved it with `ros2 pkg prefix`.
 - Confirmed created source files retain the host user's UID/GID (1000:1000).
-- Checked all local Markdown link targets/anchors and balanced code fences across 21 Markdown documents, including the alternative installation path, acceptance template and practical labs.
+- Checked all local Markdown link targets/anchors and balanced code fences across 22 Markdown documents, including the alternative installation path, acceptance template and practical labs.
 - Checked external link HTTP responses, corrected a moved micro-ROS tutorial link, and checked the additional EndeavourOS references. HTTP reachability does not guarantee that a page's instructions apply to every future version.
 - Reviewed staged files for whitespace issues and kept test workspaces, logs and credentials out of the repository.
-- Syntax-checked 70 Bash documentation examples with `bash -n` without executing their commands. This checks shell syntax, not whether each package, device or service is available on a future installation.
+- Syntax-checked 78 Bash documentation examples with `bash -n` without executing their commands. This checks shell syntax, not whether each package, device or service is available on a future installation.
 
 ## Continuation update
 
@@ -31,6 +31,17 @@ Added the researched EndeavourOS installation path, a first-weekend execution pl
 - Parsed the Python example successfully. Test logs, recordings and the can-utils build remain under ignored `reports/` directories and are not uploaded.
 
 The Ethernet profile, virtual CAN interface and image/volume backup recipes were researched and syntax-checked but not executed. A successful tools build does not validate a physical or virtual CAN exchange.
+
+## Temperature-monitor project validation
+
+- Eight standard-library unit tests passed, covering startup, exact threshold/timeout boundaries, hysteresis, stale recovery, invalid data, unknown values and rejected configuration.
+- The repeatable ROS integration checker passed against the existing image: `NORMAL`, `HIGH`, deadband retention, clearing, `INVALID`, `STALE` and recovery.
+- The integration checker enabled simulated time without publishing `/clock`; the steady-clock watchdog still detected missing data.
+- Verified that a runtime attempt to change the startup-only `high_c` parameter was rejected as read-only.
+- Replayed the existing 75-message MCAP recording into the monitor without a live sensor publisher. Observed `NORMAL`, then `HIGH`, then `STALE` after playback ended.
+- All example/test Python files parsed successfully. Test workspaces/logs remain in ignored `reports/` paths.
+
+These results validate the learning exercise, not a physical sensor, calibrated temperature limit or real-time control system. The exact commands and scope are in [the project walkthrough](19-temperature-monitor-project.md).
 
 ## Reproduction details
 

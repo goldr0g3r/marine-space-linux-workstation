@@ -48,6 +48,7 @@ Use the [first-weekend plan](docs/15-first-weekend.md) for execution order and t
 - [ ] Flash a blinky example; set a breakpoint; read UART output.
 - [ ] Complete one ROS bag replay and one simulator exercise.
 - [ ] Complete the [synthetic sensor recording/replay lab](docs/16-first-sensor-lab.md) before connecting real sensors.
+- [ ] Run the [temperature-monitor project](docs/19-temperature-monitor-project.md), including its threshold, missing-data and recovery checks.
 - [ ] If working with a companion computer, verify its Ethernet route, ROS discovery and timestamp assumptions using the [networking guide](docs/17-robot-networking-and-can.md).
 
 ## Reliability and capacity
