@@ -1,0 +1,4 @@
+**
+!containers/
+!containers/ros/
+!containers/ros/Containerfile

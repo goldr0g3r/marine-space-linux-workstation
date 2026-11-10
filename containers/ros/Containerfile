@@ -1,0 +1,12 @@
+# A supported, mature learning target; see docs/06-containers-and-ros.md.
+# For a repeatable base, pass BASE_IMAGE=docker.io/library/ros@sha256:...
+ARG BASE_IMAGE=docker.io/library/ros:jazzy-ros-base-noble
+FROM ${BASE_IMAGE}
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential cmake git python3-colcon-common-extensions \
+    ros-jazzy-demo-nodes-cpp ros-jazzy-demo-nodes-py \
+    ros-jazzy-rmw-cyclonedds-cpp \
+    && rm -rf /var/lib/apt/lists/*
+ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+WORKDIR /workspace
+CMD ["bash"]
