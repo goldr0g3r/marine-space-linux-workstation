@@ -62,7 +62,7 @@ For local learning, the helper's local-only discovery avoids advertising the lab
 ROS_AUTOMATIC_DISCOVERY_RANGE=SUBNET ROS_DOMAIN_ID=42 bash scripts/ros.sh
 ```
 
-Set the same domain and compatible discovery configuration on the robot. Sharing host networking avoids a layer of rootless NAT, but multicast may still be blocked by Wi-Fi client isolation, a VPN or firewall. Test basic IP reachability, then ROS discovery; domain ID is not authentication. Limit firewall changes to the robot interface/network. Do not disable the entire firewall to make DDS work. For untrusted/shared networks, configure ROS security and explicit peers as appropriate.
+Set the same domain and compatible discovery configuration on the robot. Sharing host networking avoids a layer of rootless NAT, but multicast may still be blocked by Wi-Fi client isolation, a VPN or firewall. Test basic IP reachability, then ROS discovery; domain ID is not authentication. Limit firewall changes to the robot interface/network. Do not disable the entire firewall to make DDS work. The inspected system runs `ufw`: the local-only labs pass with it enabled, but subnet discovery with a robot needs a rule scoped to the robot interface or subnet. For untrusted/shared networks, configure ROS security and explicit peers as appropriate.
 
 If topics are missing: verify domain, discovery scope, RMW and message definitions; then inspect `ros2 topic list` and `ros2 topic info -v TOPIC`. If topics exist but no samples arrive, inspect QoS compatibility as well as networking. Containers cannot hide a host kernel or radio problem.
 
@@ -124,4 +124,4 @@ ROS_GPU=1 bash scripts/ros.sh nvidia-smi
 
 If your package lacks the refresh unit, use the manual generation procedure in NVIDIA's documentation and regenerate after driver changes. Avoid leaving duplicate stale CDI definitions in `/etc/cdi` and `/var/run/cdi`. [NVIDIA CDI guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/cdi-support.html).
 
-This is a device-access smoke test, not a CUDA numerical test; see [AI/ML](08-ai-ml.md). Do not mix legacy NVIDIA OCI hooks and CDI injection blindly. Docker is also valid, but choose one primary engine to avoid duplicate images and confusing device configuration; ordinary membership in Docker's rootful daemon group grants broad host privileges.
+This is a device-access smoke test, not a CUDA numerical test; see [AI/ML](08-ai-ml.md). Do not mix legacy NVIDIA OCI hooks and CDI injection blindly. Docker is also valid, but choose one primary engine to avoid duplicate images and confusing device configuration; ordinary membership in Docker's rootful daemon group grants broad host privileges. The inspected system already has Docker installed and running, with your user in the `docker` group, alongside Podman. Decide at reinstall time whether Docker comes back; if it does, treat that group membership as root-equivalent access.

@@ -19,13 +19,15 @@ Use the [first-weekend plan](docs/15-first-weekend.md) for execution order and t
 
 ## Install and first boot
 
-- [ ] Install KDE Plasma + Btrfs to the Linux SSD, with a separate EFI partition on that SSD.
+- [ ] Choose the bootloader first; it sets the EFI partition size and mountpoint ([disk layout](docs/02-fresh-install.md#3-disk-layout)).
+- [ ] Install KDE Plasma + Btrfs to the Linux SSD, with a separate EFI partition on that SSD sized for that bootloader.
 - [ ] Keep the installer-supported bootloader; verify both main and LTS kernel entries.
 - [ ] Complete a full update on AC power and reboot.
 - [ ] Validate `nvidia-smi`, AMD graphics, Wi-Fi, Bluetooth, webcam and microphone.
 - [ ] Confirm the chosen snapshot manager is configured and bootable recovery is available for the chosen bootloader (Snapper on the CachyOS path, Timeshift on the described EndeavourOS path).
 - [ ] Confirm one power-management service, active zram and periodic SSD TRIM.
 - [ ] Install the core tools; restore projects selectively rather than copying all old configuration.
+- [ ] After the reinstall, remove the superseded CachyOS UEFI boot entry if one is left behind; keep Windows Boot Manager and the current entry. The 25 older dead entries were already removed on 11 November 2026.
 
 ## Audio acceptance — high priority
 
@@ -40,6 +42,7 @@ Use the [first-weekend plan](docs/15-first-weekend.md) for execution order and t
 ## Development readiness
 
 - [ ] Install Podman group and verify rootless operation.
+- [ ] Decide whether Docker returns alongside Podman; if it does, review `docker` group membership.
 - [ ] Build the supplied ROS image; run talker/listener in two terminals.
 - [ ] Build a small ROS package and check that host files remain owned by your user.
 - [ ] Set up GUI robotics only when needed; verify RViz rendering.

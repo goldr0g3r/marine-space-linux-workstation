@@ -16,10 +16,10 @@ CachyOS is already running on this laptop, but the recommendation is made for a 
 | Graphics | AMD integrated graphics + RTX 3050 Laptop, **4 GB VRAM** |
 | Wireless | MediaTek MT7921 Wi-Fi; USB Bluetooth device `13d3:3563` |
 | Audio | Your **realme Buds Wireless 5 ANC** neckband |
-| Storage | Two NVMe SSDs: about 465.8 GiB with Windows partitions and 476.9 GiB with Linux |
+| Storage | Two NVMe SSDs: `Samsung SSD 980 500GB`, about 465.8 GiB, with Windows partitions; `SAMSUNG MZVLQ512HBLU`, about 476.9 GiB, with Linux |
 | Existing Linux | CachyOS, KDE Wayland, Btrfs, GRUB, main + LTS kernels |
 
-The Linux filesystem was about 80% used, with 100 GiB available. Capacity planning matters. This guide budgets only the Linux SSD; it does not assume the Windows SSD is available for reuse. Device names can change between boots. No disk serial numbers, headset addresses, credentials or raw system logs are committed.
+When re-checked on 11 November 2026, the Linux filesystem was 87% used (about 408 GiB), with 66 GiB available. That is already below this guide's 70–90 GiB headroom target, and it sets the size of the backup needed before a reinstall. Capacity planning matters. This guide budgets only the Linux SSD; it does not assume the Windows SSD is available for reuse. Device names can change between boots. No disk serial numbers, headset addresses, credentials or raw system logs are committed.
 
 ## Read in this order
 

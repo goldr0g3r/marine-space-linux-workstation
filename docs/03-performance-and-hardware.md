@@ -43,7 +43,7 @@ Warm-cache gains are useful but should not be confused with compiler/kernel spee
 
 ## Power and thermals
 
-Use one policy manager. The existing installation has `power-profiles-daemon`; keep that initially. Do not stack TLP, auto-cpufreq and tuned on top of it.
+Use one policy manager. The existing installation has `power-profiles-daemon`; keep that initially. Do not stack TLP, auto-cpufreq and tuned on top of it. The active profile was `performance` on AC when re-checked; return to `balanced` for daily use unless a measured workload benefits.
 
 ```bash
 powerprofilesctl list
@@ -54,7 +54,7 @@ powerprofilesctl set performance
 powerprofilesctl set balanced
 ```
 
-If performance mode only increases temperature and throttling, balanced may sustain the better result. Keep vents clear and use the correct AC adapter. Check supported ASUS charge-limit and platform-profile features before installing extra utilities. `asusctl`/ROG Control Center support is model- and feature-dependent; an ASUS name does not guarantee every control works on this TUF model. [ASUS Linux setup guidance](https://asus-linux.org/guides/arch-guide/).
+If performance mode only increases temperature and throttling, balanced may sustain the better result. Keep vents clear and use the correct AC adapter. Check supported ASUS charge-limit and platform-profile features before installing extra utilities. On the inspected system the kernel already exposes both without `asusctl`: a battery charge limit (`charge_control_end_threshold` under `/sys/class/power_supply/BAT1/`, set to 100) and the quiet, balanced and performance platform profiles. KDE's power-management settings offer a charge limit when that interface is present. `asusctl`/ROG Control Center support is model- and feature-dependent; an ASUS name does not guarantee every control works on this TUF model. [ASUS Linux setup guidance](https://asus-linux.org/guides/arch-guide/).
 
 Do not force `amd_pstate` options if firmware does not expose the required support. Inspect the active driver first:
 

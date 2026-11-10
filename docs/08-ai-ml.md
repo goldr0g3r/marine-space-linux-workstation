@@ -27,11 +27,22 @@ First verify the **host driver** with `nvidia-smi`. Its displayed CUDA version i
 
 Use PyTorch's current Linux/Pip/Python installation selector to choose a CUDA wheel supported by your driver. Translate the package/index choice into the documented uv PyTorch integration so it is recorded in the project. Do not copy an old hardcoded CUDA wheel URL from a blog. [PyTorch selector](https://pytorch.org/get-started/locally/), [uv PyTorch guide](https://docs.astral.sh/uv/guides/integration/pytorch/).
 
-For a first CPU-only learning environment, the documented uv explicit-index pattern is:
+For a first CPU-only learning environment, add the packages with a named index:
 
 ```bash
 uv add torch torchvision --index pytorch=https://download.pytorch.org/whl/cpu
 ```
+
+That command binds `torch` and `torchvision` to the `pytorch` index under `[tool.uv.sources]`, but it does not mark the index explicit. Checked with uv 0.13.1: without that flag, other packages such as NumPy and Pillow were also locked from the PyTorch index instead of PyPI. Edit the generated entry in `pyproject.toml` to match the uv guide's pattern:
+
+```toml
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+```
+
+An existing lockfile keeps its recorded sources, so remove `uv.lock` and run `uv lock` again after the edit. Then confirm in `uv.lock` that only the torch packages list the PyTorch index as their source.
 
 For GPU work, replace the index with the **current selector-compatible CUDA index** and resolve the lockfile again. Review `pyproject.toml` to confirm torch packages are bound to that index. Wheel availability depends on Python version and platform.
 

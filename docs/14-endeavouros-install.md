@@ -22,7 +22,7 @@ GRUB here is a recovery-workflow choice, not a speed claim. EndeavourOS also off
 
 ## 1. Back up, download and install
 
-Complete the backup and disk-identification steps in [the fresh-install guide](02-fresh-install.md#1-capture-a-recovery-baseline). Both SSDs have similar model strings: verify the intended Linux disk by its locally recorded serial, size and existing partitions. Fresh Linux installation does not authorize erasing Windows.
+Complete the backup and disk-identification steps in [the fresh-install guide](02-fresh-install.md#1-capture-a-recovery-baseline). Both SSDs are Samsung drives of similar size: verify the intended Linux disk by its model, locally recorded serial, size and existing partitions. Fresh Linux installation does not authorize erasing Windows.
 
 Get the ISO, checksum and signature from the [EndeavourOS download page](https://endeavouros.com/download/). Follow its verification links; do not reuse a CachyOS checksum or signing key. Use UEFI boot and the firmware settings required by the current EndeavourOS installer. Keep AC connected.
 

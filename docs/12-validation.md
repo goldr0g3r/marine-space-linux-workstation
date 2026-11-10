@@ -43,6 +43,18 @@ The Ethernet profile, virtual CAN interface and image/volume backup recipes were
 
 These results validate the learning exercise, not a physical sensor, calibrated temperature limit or real-time control system. The exact commands and scope are in [the project walkthrough](19-temperature-monitor-project.md).
 
+## Re-verification, 11 November 2026
+
+An independent pass re-checked the guide against the laptop and upstream pages.
+
+- Reproduced: eight unit tests, the live ROS integration checker, ShellCheck, Bash syntax, local Markdown links and the recorded image ID, size and base digest.
+- External links: 56 of 57 returned HTTP 200. `ubuntu.com/desktop` returned 503 to the checking script; that was not investigated further.
+- Confirmed upstream: Realme manual details (RMA2412, SBC/AAC, pairing), ROS Jazzy and Lyrical support dates, EndeavourOS Titan Nova and `eos-hwtool`, CachyOS Secure Boot requirement and the NVIDIA CDI refresh units.
+- Corrected: free disk space in the README, EFI partition sizing and bootloader choice in the install chapter, and the uv PyTorch index instructions. The uv behaviour was reproduced by locking a scratch project with and without `explicit = true`.
+- Added observed facts: SSD models, 29 UEFI boot entries (the 25 dead ones were then removed by the owner with `efibootmgr`), Docker running alongside Podman, `ufw` enabled, kernel charge-limit support and the active power profile.
+
+The message counts from the original runs, all physical tests, the GUI path and the EndeavourOS path were not re-checked.
+
 ## Reproduction details
 
 ```bash

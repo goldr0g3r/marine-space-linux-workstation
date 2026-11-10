@@ -32,7 +32,7 @@ References: [Fedora KDE](https://fedoraproject.org/kde/), [Tumbleweed](https://g
 
 - Current stable CachyOS Desktop ISO; KDE Plasma; Wayland initially.
 - Btrfs using the installer-supported subvolume layout, with snapshot recovery verified.
-- Installer-supported bootloader. Keep GRUB if it is the best-supported option for the chosen encryption/layout; no need to switch purely for speed.
+- Limine or GRUB, the two bootloaders for which CachyOS ships bootable-snapshot integration. Limine's is enabled by default with Btrfs; choose GRUB if you need an encrypted `/boot`. The choice sets the EFI partition size, so decide it before partitioning; see [the disk layout](02-fresh-install.md#3-disk-layout). Do not switch purely for speed.
 - Default CachyOS kernel plus CachyOS LTS, each with matching NVIDIA support.
 - AMD iGPU for ordinary desktop use, NVIDIA on demand for compute/rendering.
 - PipeWire + WirePlumber + BlueZ; AAC or SBC for your neckband, chosen by listening and dropout tests.

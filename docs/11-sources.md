@@ -10,7 +10,8 @@ Research date: **10 November 2026**, Asia/Kolkata. Links point to upstream proje
 | [CachyOS kernel](https://wiki.cachyos.org/features/kernel/) | Kernel choices and tuning; retaining a fallback |
 | [CachyOS chwd](https://wiki.cachyos.org/features/chwd/chwd/) | Hardware/driver setup |
 | [CachyOS ISO verification](https://wiki.cachyos.org/cachyos_basic/download/) | Download authenticity/integrity |
-| [CachyOS installation](https://wiki.cachyos.org/installation/installation_on_root/) | UEFI, Secure Boot and installer considerations |
+| [CachyOS installation](https://wiki.cachyos.org/installation/installation_on_root/) | UEFI, Secure Boot, per-bootloader EFI partition sizes and installer considerations |
+| [CachyOS boot managers](https://wiki.cachyos.org/installation/boot_managers/) | Bootloader comparison: snapshot booting and encryption support |
 | [CachyOS snapshots](https://wiki.cachyos.org/configuration/btrfs_snapshots/) | Snapshot and bootloader recovery workflow |
 | [Fedora KDE](https://fedoraproject.org/kde/) | Primary alternative desktop offering |
 | [openSUSE Tumbleweed](https://get.opensuse.org/tumbleweed/) | Rolling model and recovery approach |

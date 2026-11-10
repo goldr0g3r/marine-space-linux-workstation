@@ -46,7 +46,7 @@ Use the robot's matching ROS domain and compatible message definitions. For the 
 ROS_AUTOMATIC_DISCOVERY_RANGE=SUBNET ROS_DOMAIN_ID=42 bash scripts/ros.sh
 ```
 
-If the route is correct but discovery fails, inspect the selected interface, multicast behavior, VPN routes and firewall. Allow only the traffic needed on the bench interface; do not make every network trusted. A successful ping does not prove DDS discovery or QoS compatibility.
+If the route is correct but discovery fails, inspect the selected interface, multicast behavior, VPN routes and firewall. Allow only the traffic needed on the bench interface; do not make every network trusted. The inspected system uses `ufw`; `sudo ufw status verbose` shows the active rules. A rule of the form `sudo ufw allow in on INTERFACE from 192.168.50.0/24` limits the exception to the example bench subnet. That rule was not executed during preparation of this guide. A successful ping does not prove DDS discovery or QoS compatibility.
 
 Check clocks on the laptop and companion computer with `timedatectl status`. Use a common time source when comparing timestamps across machines. “Synchronized” alone is not proof of sub-millisecond agreement; measure offsets for tasks that require precision. Local duration measurements should use a monotonic clock. Never infer network latency by subtracting unsynchronized wall clocks.
 
