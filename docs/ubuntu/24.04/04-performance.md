@@ -53,7 +53,7 @@ This is why it felt faster. The right-hand column is the supported Ubuntu equiva
 | Service stop timeout | 10 s | 15 s |
 | Open-file limit | Soft limit raised | Raised in section 14 |
 | NVIDIA | `NVreg_InitializeSystemMemoryAllocations=0` | Not carried over: small gain, and it stops the driver clearing memory it hands out |
-| Optimised package builds | x86-64-v3 repositories | No equivalent. Does not affect MATLAB, ROS binaries, Python wheels or containers |
+| Optimised package builds | x86-64-v3 repositories | No equivalent on 24.04. Canonical measured about 1% from such builds for most packages. Does not affect MATLAB, ROS binaries, Python wheels or containers |
 
 Boot on CachyOS took 47.4 s: 9.4 s firmware, 21.8 s boot loader (mostly the menu timeout), 0.8 s kernel, 6.0 s initrd and 9.5 s userspace. Use those as the comparison for section 14.
 
@@ -192,7 +192,7 @@ Undo: remove the parameters from `/etc/default/grub` and run `sudo update-grub`;
 
 ## 5. Memory
 
-The laptop has 16 GB today (2 × 8 GB). An 8 + 16 GB upgrade to 24 GB is planned; the settings below work for both.
+The laptop has 16 GB today (2 × 8 GB). An 8 + 16 GB upgrade to 24 GB is planned; the settings below work for both. The integrated GPU reserves 512 MiB of that and takes more as the desktop needs it, so less is available to programs than the label suggests.
 
 ### zram
 
@@ -336,7 +336,7 @@ gamemoderun gz sim shapes.sdf
 
 ## 7. Storage
 
-The Linux SSD is a Samsung OEM drive (`MZVLQ512HBLU`). Drives of this class slow down during long sustained writes and when nearly full, so free space is a performance setting here.
+The Linux SSD is a Samsung PM991a (`MZVLQ512HBLU`), an OEM drive without a DRAM cache. Drives of this type slow down during long sustained writes and when nearly full, so free space is a performance setting here. Under CachyOS it was 88% full, with 59 GiB free, which was already costing speed.
 
 **Free space.** Keep 15 to 20% free. [The upkeep chapter](05-long-term-upkeep.md#3-disk-hygiene) has the monthly routine.
 
@@ -414,7 +414,7 @@ Add the line `PrefersNonDefaultGPU=true` under `[Desktop Entry]` in the copy. Do
 cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status
 ```
 
-`0000:01:00.0` is this laptop's NVIDIA device. `suspended` is the goal. If it stays `active`, run `nvidia-smi` once to see which process holds it, then close that process and stop any GPU monitor; polling keeps the GPU awake. An external monitor on a port wired to the NVIDIA GPU also keeps it on, which is expected.
+`0000:01:00.0` is this laptop's NVIDIA device. `suspended` is the goal. If it stays `active`, run `nvidia-smi` once to see which process holds it, then close that process and stop any GPU monitor; polling keeps the GPU awake. A monitor on the USB-C DisplayPort output also keeps it on, because that output is wired to the NVIDIA GPU. The HDMI port is wired to the AMD GPU, so an HDMI monitor lets NVIDIA sleep. See [the wiring table](../02-hardware-profile.md#graphics-and-display-wiring).
 
 **Session.** On Kubuntu 24.04 use the X11 session with NVIDIA for RViz, Gazebo and MATLAB.
 
@@ -713,6 +713,6 @@ Keep copies of these in a private dotfiles repository so a reinstall takes minut
 
 ## Expected outcome
 
-With tier 1 applied, responsiveness under load should be close to CachyOS, because the same mechanisms are in place: full preemption, zram, the performance profile and the same memory settings. Compile throughput depends on the compiler, ccache and cooling far more than on the distribution. The remaining gap is CachyOS's optimised package builds and its 1000 Hz kernel; the low-latency flavour closes the second.
+With tier 1 applied, responsiveness under load should be close to CachyOS, because the same mechanisms are in place: full preemption, zram, the performance profile and the same memory settings. Compile throughput depends on the compiler, ccache and cooling far more than on the distribution. The remaining gap is CachyOS's optimised package builds and its 1000 Hz kernel. Canonical's own measurement puts the first at about 1% for most packages, and the low-latency flavour closes the second.
 
 Continue with [long-term upkeep](05-long-term-upkeep.md).

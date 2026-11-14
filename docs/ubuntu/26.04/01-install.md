@@ -38,6 +38,8 @@ ext4 is chosen because it is the installer default and the layout vendors test. 
 
 Follow [the recovery baseline](../../02-fresh-install.md#1-capture-a-recovery-baseline). The whole Linux SSD is erased. Push or copy every repository under `~/Projects`, and export container volumes that hold unique data.
 
+The old installation was 88% full, which slows this type of SSD. Restore selectively onto the new system; do not copy the whole home directory back. See [the hardware profile](../02-hardware-profile.md#storage).
+
 Record these outside the disk being erased:
 
 ```bash
@@ -75,6 +77,7 @@ Write the USB with a graphical image writer and confirm the selected device befo
 - UEFI mode, CSM disabled.
 - Secure Boot may stay on. Ubuntu boots through a signed shim. If the NVIDIA driver is built by DKMS, the installer or `ubuntu-drivers` asks for a one-time password, and the next boot shows a blue MOK screen where you choose **Enroll MOK** and type it.
 - Do not change the storage controller mode.
+- The installed BIOS is `FA706IC.302` from December 2022. Check ASUS's support page for a newer version and apply it, on AC power, before installing.
 
 ## 4. Test the live session
 
@@ -91,7 +94,7 @@ Boot the USB and choose **Try**. Check keyboard, touchpad, Wi-Fi, brightness, sp
 5. Do not create a swap partition.
 6. Read the summary. The `Samsung SSD 980` disk must show no format, delete or bootloader action. If it does, go back.
 
-Never choose the target by `nvme0n1` or `nvme1n1` alone; the numbering can change between boots.
+Never choose the target by `nvme0n1` or `nvme1n1` alone; the numbering can change between boots. Both SSDs also report the same PCI device ID, so tools that list hardware IDs cannot tell them apart.
 
 ## 6. First boot
 

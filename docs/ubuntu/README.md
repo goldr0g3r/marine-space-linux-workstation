@@ -18,7 +18,7 @@ These are researched procedures. Nothing here was installed or executed on the l
 | System Python / GCC | 3.12 / 13 | 3.14 / 15 |
 | Standard support ends | May 2029 | April 2031 |
 
-The reasoning and the scored comparison against Fedora, Debian, Pop!_OS, atomic desktops and CachyOS are in [the distro decision](01-distro-decision.md).
+The reasoning and the scored comparison against Fedora, Debian, Pop!_OS, atomic desktops and CachyOS are in [the distro decision](01-distro-decision.md). What the laptop contains, and what that means for these guides, is in [the hardware profile](02-hardware-profile.md).
 
 ## Reading order
 
@@ -42,12 +42,12 @@ Each version has the same five chapters:
 
 | Item | Value |
 |---|---|
-| Laptop | ASUS TUF Gaming A17 FA706IC |
-| CPU | Ryzen 7 4800H (Zen 2), 8 cores / 16 threads |
+| Laptop | ASUS TUF Gaming A17 FA706IC, BIOS `FA706IC.302` |
+| CPU | Ryzen 7 4800H (Zen 2), 8 cores / 16 threads, x86-64-v3, `amd-pstate-epp` |
 | RAM | 16 GB today (2 × 8 GB). An upgrade to 24 GB (8 + 16) is planned; the memory and build settings cover both |
-| Graphics | AMD integrated + RTX 3050 Laptop, 4 GB VRAM |
+| Graphics | AMD integrated + RTX 3050 Laptop, 4 GB VRAM. Internal panel and HDMI on AMD; USB-C DisplayPort on NVIDIA |
 | Wireless | MediaTek MT7921 Wi-Fi; USB Bluetooth `13d3:3563` |
-| Linux SSD | `SAMSUNG MZVLQ512HBLU`, 476.9 GiB, currently CachyOS |
+| Linux SSD | Samsung PM991a (`MZVLQ512HBLU`), 476.9 GiB, currently CachyOS and 88% full |
 | Windows SSD | `Samsung SSD 980 500GB`, 465.8 GiB, must stay untouched |
 
 ## What still applies from the rest of the repository

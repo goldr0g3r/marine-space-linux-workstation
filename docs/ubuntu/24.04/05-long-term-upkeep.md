@@ -137,7 +137,7 @@ Remove sources you no longer use. `sudo apt install ppa-purge` followed by `sudo
 fwupdmgr refresh && fwupdmgr get-updates
 ```
 
-BIOS updates for this laptop come from ASUS and are installed from the firmware's own update tool. Read the release notes; apply them when they mention stability, charging or thermal fixes, and never on battery.
+BIOS updates for this laptop come from ASUS and are installed from the firmware's own update tool. The version installed on 14 November 2026 was `FA706IC.302`, from December 2022. Read the release notes; apply them when they mention stability, charging or thermal fixes, and never on battery.
 
 ## 3. Disk hygiene
 
@@ -246,7 +246,7 @@ Quarterly:
 sudo nvme smart-log /dev/nvme0 | grep -E 'percentage_used|available_spare|media_errors|temperature'
 ```
 
-`percentage_used` climbing quickly means something is writing constantly; find it with `sudo iotop-c -ao`. Any non-zero `media_errors` means back up now.
+The Linux SSD has no DRAM cache, so its speed depends on free space more than most; keep it under about 80% full. `percentage_used` climbing quickly means something is writing constantly; find it with `sudo iotop-c -ao`. Any non-zero `media_errors` means back up now.
 
 ### Memory
 

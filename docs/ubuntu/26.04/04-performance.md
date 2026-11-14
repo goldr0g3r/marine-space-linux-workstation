@@ -27,6 +27,7 @@ Work through the tiers in order. Tier 1 is where most of the difference in feel 
 | 2 | Boot and background services | Faster boot, less idle load | Low | 14 |
 | 3 | Low-latency packages, if they still differ from generic | 1000 Hz timer | Different kernel to keep working | 4 |
 | 3 | Real-time permissions, CPU isolation, RT kernel | Deterministic control loops | Advanced | 13 |
+| 3 | Opt-in `amd64v3` packages | About 1% for most packages, more for numerical code | Experimental, no documented way back | 1 |
 
 ## 1. What CachyOS was doing on this laptop
 
@@ -53,9 +54,45 @@ This is why it felt faster. The right-hand column is the supported Ubuntu equiva
 | Service stop timeout | 10 s | 15 s |
 | Open-file limit | Soft limit raised | Raised in section 14 |
 | NVIDIA | `NVreg_InitializeSystemMemoryAllocations=0` | Not carried over: small gain, and it stops the driver clearing memory it hands out |
-| Optimised package builds | x86-64-v3 repositories | No equivalent. Does not affect MATLAB, ROS binaries, Python wheels or containers |
+| Optimised package builds | x86-64-v3 repositories | Opt-in `amd64v3` packages, described below. Does not affect MATLAB, ROS binaries, Python wheels or containers |
 
 Boot on CachyOS took 47.4 s: 9.4 s firmware, 21.8 s boot loader (mostly the menu timeout), 0.8 s kernel, 6.0 s initrd and 9.5 s userspace. Use those as the comparison for section 14.
+
+### Optimised packages on 26.04 (tier 3, experimental)
+
+This CPU supports the x86-64-v3 instruction level, which is what CachyOS's optimised repositories were built for. Ubuntu introduced the same idea in 25.10 as an opt-in "architecture variant" called `amd64v3`, and 26.04 still offers it as opt-in; the default packages remain the baseline build.
+
+Confirm the CPU qualifies:
+
+```bash
+ld.so --help | grep -E 'x86-64-v[234]'
+```
+
+`x86-64-v3 (supported, searched)` is the line to look for. Canonical's published steps to opt in are:
+
+```bash
+sudo apt update && sudo apt install dpkg
+```
+
+```bash
+echo 'APT::Architecture-Variants "amd64v3";' | sudo tee /etc/apt/apt.conf.d/99enable-amd64v3
+```
+
+```bash
+sudo apt update && sudo apt upgrade
+```
+
+Read this before doing it:
+
+- **The gain is small.** Canonical measured about 1% for most packages, and more for numerical code. Your heaviest software is not affected at all: MATLAB, ROS packages from the ROS repository, NVIDIA's packages, Python wheels and everything inside containers stay as they are.
+- **There is no documented way back.** The announcement says a recovery method would be worked on for 26.04. Take a Timeshift snapshot first and treat that as the undo.
+- **Its support status is unclear.** Canonical planned to rebuild and test every package for 26.04, but as of late 2026 reports still describe the variant as opt-in testing that Canonical has not endorsed as an equal alternative.
+- **One user reported `ubuntu-drivers` stopped working** after switching; Canonical could not reproduce it. On a laptop that depends on the NVIDIA driver, that is a risk worth weighing.
+- **A disk prepared this way may not boot in an older computer** without x86-64-v3.
+
+Recommendation: leave it off. It is the one CachyOS advantage with a real Ubuntu counterpart, but it moves the system away from the configuration vendors test, for a gain that the worksheet in section 17 will struggle to show. If you try it, do so last, after everything else works, and measure before and after.
+
+Sources: [Canonical's announcement](https://discourse.ubuntu.com/t/introducing-architecture-variants-amd64v3-now-available-in-ubuntu-25-10/71312), [status in September 2026](https://omgubuntu.co.uk/2026/09/ubuntu-amd64v3-iso-downloads).
 
 ## 2. Measure before changing anything
 
@@ -192,7 +229,7 @@ Undo: remove the parameters from `/etc/default/grub` and run `sudo update-grub`.
 
 ## 5. Memory
 
-The laptop has 16 GB today (2 × 8 GB). An 8 + 16 GB upgrade to 24 GB is planned; the settings below work for both.
+The laptop has 16 GB today (2 × 8 GB). An 8 + 16 GB upgrade to 24 GB is planned; the settings below work for both. The integrated GPU reserves 512 MiB of that and takes more as the desktop needs it, so less is available to programs than the label suggests.
 
 ### zram
 
@@ -336,7 +373,7 @@ gamemoderun gz sim shapes.sdf
 
 ## 7. Storage
 
-The Linux SSD is a Samsung OEM drive (`MZVLQ512HBLU`). Drives of this class slow down during long sustained writes and when nearly full, so free space is a performance setting here.
+The Linux SSD is a Samsung PM991a (`MZVLQ512HBLU`), an OEM drive without a DRAM cache. Drives of this type slow down during long sustained writes and when nearly full, so free space is a performance setting here. Under CachyOS it was 88% full, with 59 GiB free, which was already costing speed.
 
 **Free space.** Keep 15 to 20% free. [The upkeep chapter](05-long-term-upkeep.md#3-disk-hygiene) has the monthly routine.
 
@@ -414,7 +451,7 @@ Add the line `PrefersNonDefaultGPU=true` under `[Desktop Entry]` in the copy. Do
 cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status
 ```
 
-`0000:01:00.0` is this laptop's NVIDIA device. `suspended` is the goal. If it stays `active`, run `nvidia-smi` once to see which process holds it, then close that process and stop any GPU monitor; polling keeps the GPU awake. An external monitor on a port wired to the NVIDIA GPU also keeps it on, which is expected.
+`0000:01:00.0` is this laptop's NVIDIA device. `suspended` is the goal. If it stays `active`, run `nvidia-smi` once to see which process holds it, then close that process and stop any GPU monitor; polling keeps the GPU awake. A monitor on the USB-C DisplayPort output also keeps it on, because that output is wired to the NVIDIA GPU. The HDMI port is wired to the AMD GPU, so an HDMI monitor lets NVIDIA sleep. See [the wiring table](../02-hardware-profile.md#graphics-and-display-wiring).
 
 **Session.** The Ubuntu Desktop session is Wayland only, and Kubuntu defaults to Wayland. X11 programs run through XWayland. If RViz or another Qt tool misbehaves under Wayland, start it with `QT_QPA_PLATFORM=xcb`.
 
@@ -726,6 +763,6 @@ Keep copies of these in a private dotfiles repository so a reinstall takes minut
 
 ## Expected outcome
 
-With tier 1 applied, responsiveness under load should be close to CachyOS, because the same mechanisms are in place: full preemption, zram, the performance profile and the same memory settings. Compile throughput depends on the compiler, ccache and cooling far more than on the distribution. The remaining gap is CachyOS's optimised package builds and, if `CONFIG_HZ` on your kernel is lower than 1000, its timer frequency.
+With tier 1 applied, responsiveness under load should be close to CachyOS, because the same mechanisms are in place: full preemption, zram, the performance profile and the same memory settings. Compile throughput depends on the compiler, ccache and cooling far more than on the distribution. The remaining gap is CachyOS's optimised package builds, which Canonical's own measurement puts at about 1% for most packages, and, if `CONFIG_HZ` on your kernel is lower than 1000, its timer frequency.
 
 Continue with [long-term upkeep](05-long-term-upkeep.md).
