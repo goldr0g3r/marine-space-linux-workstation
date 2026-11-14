@@ -43,6 +43,7 @@ For a shorter execution sequence, start with [the first-weekend plan](docs/15-fi
 16. [Robot networking and CAN](docs/17-robot-networking-and-can.md) — dedicated Ethernet, clock checks and a virtual CAN exercise.
 17. [Offline use and environment backup](docs/18-offline-and-environment-backup.md) — preserve images, project data and volumes; rehearse working without internet.
 18. [Temperature-monitor mini-project](docs/19-temperature-monitor-project.md) — threshold alerts, hysteresis, missing-data detection and repeatable tests.
+19. [Ubuntu LTS path](docs/ubuntu/README.md) — alternative host for vendor-supported MATLAB, ROS 2 and CUDA: decision matrix, plus install, snap/Flatpak/apt, toolchain and performance guides for 24.04 and 26.04.1.
 
 ## Included helpers
 
