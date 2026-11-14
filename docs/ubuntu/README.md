@@ -22,12 +22,13 @@ The reasoning and the scored comparison against Fedora, Debian, Pop!_OS, atomic 
 
 ## Reading order
 
-Each version has the same four chapters:
+Each version has the same five chapters:
 
 1. **Install** — backup, media, firmware, partitioning beside Windows, first boot.
 2. **Snap, Flatpak and apt** — keep snapd intact, make apt and Flatpak the day-to-day sources.
 3. **Toolchain** — NVIDIA, containers, ROS 2, Gazebo, MATLAB, KiCad, embedded tools.
-4. **Performance** — kernel, power, memory, storage, builds, DDS, and what not to touch.
+4. **Performance** — what CachyOS was doing on this laptop and the Ubuntu equivalent, in three tiers: power, kernel, memory, storage, graphics, desktop, builds, ROS 2 and real time.
+5. **Long-term upkeep** — update discipline, disk hygiene, hardware care, and a symptom table for when it gets slower.
 
 | Chapter | 24.04 | 26.04 |
 |---|---|---|
@@ -35,6 +36,7 @@ Each version has the same four chapters:
 | Snap, Flatpak and apt | [24.04/02-snap-flatpak-apt.md](24.04/02-snap-flatpak-apt.md) | [26.04/02-snap-flatpak-apt.md](26.04/02-snap-flatpak-apt.md) |
 | Toolchain | [24.04/03-toolchain.md](24.04/03-toolchain.md) | [26.04/03-toolchain.md](26.04/03-toolchain.md) |
 | Performance | [24.04/04-performance.md](24.04/04-performance.md) | [26.04/04-performance.md](26.04/04-performance.md) |
+| Long-term upkeep | [24.04/05-long-term-upkeep.md](24.04/05-long-term-upkeep.md) | [26.04/05-long-term-upkeep.md](26.04/05-long-term-upkeep.md) |
 
 ## Hardware this was written for
 
@@ -42,7 +44,7 @@ Each version has the same four chapters:
 |---|---|
 | Laptop | ASUS TUF Gaming A17 FA706IC |
 | CPU | Ryzen 7 4800H (Zen 2), 8 cores / 16 threads |
-| RAM | Stated as 24 GB (8 + 16). `free -h` on 14 November 2026 reported 15 GiB, so check `sudo dmidecode -t memory` before sizing anything |
+| RAM | 16 GB today (2 × 8 GB). An upgrade to 24 GB (8 + 16) is planned; the memory and build settings cover both |
 | Graphics | AMD integrated + RTX 3050 Laptop, 4 GB VRAM |
 | Wireless | MediaTek MT7921 Wi-Fi; USB Bluetooth `13d3:3563` |
 | Linux SSD | `SAMSUNG MZVLQ512HBLU`, 476.9 GiB, currently CachyOS |
